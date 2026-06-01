@@ -3,7 +3,10 @@
 Reference implementation for the paper:<br>
 **[Self-Trained Verification for Training- and Test-Time Self-Improvement](https://arxiv.org/abs/2605.30290)**<br>
 Chen Henry Wu, Aditi Raghunathan<br>
+Preprint 2026
+
 Project page: https://ar-forum.github.io/stv-webpage/
+
 ## Install
 
 `verl/` is a customized fork of [verl](https://github.com/volcengine/verl); set it up
@@ -27,12 +30,9 @@ for the reference-conditioned teacher from `--train_problems_dir` /
 `--val_problems_dir` as `{split}_problems_{bin}.jsonl` with a `problem` field and an
 oracle-solution field.
 
-## Pipeline
+## Usage
 
-All commands are run from this directory (the repo root), so that
-`from examples...` / `from verifier...` imports resolve.
-
-### Stage 1 — Train the STV verifier
+### Train the STV verifier
 
 ```bash
 # (a) DAPO rollouts -> RL verifier parquets
@@ -64,6 +64,7 @@ python verifier/prepare_generator_feedback_data.py \
     --verifier_model <STV_verifier_checkpoint> --rollout_n 8
 
 # (b) continue training the converged RLVR generator inside the V-R loop
+#     NOTE: this step assumes you have a generator trained with RLVR
 TRAIN_FILES="['verifier/data/dapo_generator_feedback_train.parquet']" \
 VAL_FILES="['verifier/data/dapo_generator_feedback_val.parquet']" \
     ./verifier/run_grpo_generator_feedback_hard_qwen3_8b.sh
