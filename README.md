@@ -3,7 +3,7 @@
 Reference implementation for the paper:<br>
 **[Self-Trained Verification for Training- and Test-Time Self-Improvement](https://arxiv.org/abs/2605.30290)**<br>
 Chen Henry Wu, Aditi Raghunathan<br>
-Preprint 2026
+NeurIPS 2026
 
 Project page: https://ar-forum.github.io/stv-webpage/
 
